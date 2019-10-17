@@ -1,4 +1,6 @@
+"""Explore Shreveport water billing."""
 import time
+
 
 garbage_fee = 7.000
 recycling_fee = 2.500
@@ -52,7 +54,7 @@ def monthly_water_bill(start_amt, current_amt, meter_size):
 
 
 def shreveport_2019_water_volume_rate(volume_of_water):
-    """Return billed amount from starting current read and prior amount."""
+    """Return billed amount for volume of water."""
     if volume_of_water > 14:
         total_volume_water_charge = (
             tier4_2019 * (volume_of_water - 14)
@@ -76,11 +78,13 @@ def shreveport_2019_water_volume_rate(volume_of_water):
 
 
 def shreveport_2019_sewer_charge(volume_of_water):
+    """Return billed sewer amount for volume of water."""
     total_sewer_charge = volume_of_water * sewer_rate_per_1000
     return total_sewer_charge
 
 
 def monthly_water_billed_by_gallon(start_amt, current_amt):
+    """Return billed amount from starting current read and prior amount."""
     start_time = time.process_time_ns()
     water_base = 10.830
     water_first_3 = 1.320
