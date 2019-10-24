@@ -6,7 +6,7 @@ garbage_fee = 7.000
 recycling_fee = 2.500
 safe_drinking_water_fee = 1.000
 
-#(Ord. No. 186, 2002, 11-26-02)
+# (Ord. No. 186, 2002, 11-26-02)
 security_fee = 0.500
 
 tier1_2019 = 1.320
@@ -16,9 +16,9 @@ tier4_2019 = 4.470
 commercial = 3.020
 industrial = 3.020
 
-#Sec. 94-164. - Monthly water customer charge
-#inside city water fees
-#effective Oct 1, 2013 to Jan 31, 2015
+# Sec. 94-164. - Monthly water customer charge
+# inside city water fees
+# effective Oct 1, 2013 to Jan 31, 2015
 meter_size_5_8_2013 = 4.80
 meter_size_3_4_2013 = 5.53
 meter_size_1_2013 = 6.24
@@ -30,9 +30,9 @@ meter_size_6_2013 = 101.69
 meter_size_8_2013 = 151.69
 meter_size_10_2013 = 205.77
 
-#Sec. 94-164. - Monthly water customer charge
-#inside city water fees
-#effective Feb 1, 2015 to Dec 31, 2015
+# Sec. 94-164. - Monthly water customer charge
+# inside city water fees
+# effective Feb 1, 2015 to Dec 31, 2015
 meter_size_5_8_2015 = 6.540
 meter_size_3_4_2015 = 7.490
 meter_size_1_2015 = 9.390
@@ -45,9 +45,9 @@ meter_size_8_2015 = 156.57
 meter_size_10_2015 = 223.03
 
 
-#Sec. 94-164. - Monthly water customer charge
-#inside city water fees
-#effective Jan 1, 2016 to Dec 31, 2019
+# Sec. 94-164. - Monthly water customer charge
+# inside city water fees
+# effective Jan 1, 2016 to Dec 31, 2019
 meter_size_5_8_2016 = 7.540
 meter_size_3_4_2016 = 8.640
 meter_size_1_2016 = 10.830
@@ -59,9 +59,9 @@ meter_size_6_2016 = 114.820
 meter_size_8_2016 = 180.510
 meter_size_10_2016 = 257.130
 
-#Sec. 94-164. - Monthly water customer charge
-#inside city water fees
-#effective Jan 1, 2020 to Dec 31, 2021
+# Sec. 94-164. - Monthly water customer charge
+# inside city water fees
+# effective Jan 1, 2020 to Dec 31, 2021
 meter_size_5_8_2020 = 8.540
 meter_size_3_4_2020 = 9.780
 meter_size_1_2020 = 12.260
@@ -73,9 +73,9 @@ meter_size_6_2020 = 130.050
 meter_size_8_2020 = 204.45
 meter_size_10_2020 = 291.23
 
-#Sec. 94-164. - Monthly water customer charge
-#inside city water fees
-#effective Jan 1, 2022
+# Sec. 94-164. - Monthly water customer charge
+# inside city water fees
+# effective Jan 1, 2022
 meter_size_5_8_2022 = 9.450
 meter_size_3_4_2022 = 10.93
 meter_size_1_2022 = 13.700
@@ -135,14 +135,10 @@ def shreveport_2019_water_volume_rate(volume_of_water):
         )
     elif volume_of_water > 7:
         total_volume_water_charge = (
-            tier3_2019 * (volume_of_water - 7)
-            + 4 * teir2_2019
-            + 3 * tier1_2019
+            tier3_2019 * (volume_of_water - 7) + 4 * teir2_2019 + 3 * tier1_2019
         )
     elif volume_of_water > 3:
-        total_volume_water_charge = (
-            teir2_2019 * (volume_of_water - 3) + 3 * tier1_2019
-        )
+        total_volume_water_charge = teir2_2019 * (volume_of_water - 3) + 3 * tier1_2019
     else:
         total_volume_water_charge = tier1_2019 * volume_of_water
     return total_volume_water_charge
@@ -170,19 +166,11 @@ def monthly_water_billed_by_gallon(start_amt, current_amt):
     if (current_amt - start_amt) > 3000:
         first_3k_water = water_first_3 * 3
         total_bill = total_bill + first_3k_water
-        total_bill = (
-            total_bill + (current_amt - start_amt - 3000) / 1000 * water_over_3
-        )
-        total_bill = (
-            total_bill + sewer_charge * (current_amt - start_amt) / 1000
-        )
+        total_bill = total_bill + (current_amt - start_amt - 3000) / 1000 * water_over_3
+        total_bill = total_bill + sewer_charge * (current_amt - start_amt) / 1000
     else:
-        total_bill = (
-            total_bill + water_first_3 * (current_amt - start_amt) / 1000
-        )
-        total_bill = (
-            total_bill + sewer_charge * (current_amt - start_amt) / 1000
-        )
+        total_bill = total_bill + water_first_3 * (current_amt - start_amt) / 1000
+        total_bill = total_bill + sewer_charge * (current_amt - start_amt) / 1000
     print(f"---{(time.process_time_ns() - start_time)} nanoseconds ---")
     return round(total_bill, 2)
 
