@@ -5,6 +5,8 @@ import time
 garbage_fee = 7.000
 recycling_fee = 2.500
 safe_drinking_water_fee = 1.000
+
+#(Ord. No. 186, 2002, 11-26-02)
 security_fee = 0.500
 
 tier1_2019 = 1.320
@@ -14,8 +16,77 @@ tier4_2019 = 4.470
 commercial = 3.020
 industrial = 3.020
 
-meter_size_5_8_2019 = 7.540
-meter_size_1_2019 = 10.830
+#Sec. 94-164. - Monthly water customer charge
+#inside city water fees
+#effective Oct 1, 2013 to Jan 31, 2015
+meter_size_5_8_2013 = 4.80
+meter_size_3_4_2013 = 5.53
+meter_size_1_2013 = 6.24
+meter_size_1_1_2_2013 = 9.98
+meter_size_2_2013 = 14.06
+meter_size_3_2013 = 29.87
+meter_size_4_2013 = 51.65
+meter_size_6_2013 = 101.69
+meter_size_8_2013 = 151.69
+meter_size_10_2013 = 205.77
+
+#Sec. 94-164. - Monthly water customer charge
+#inside city water fees
+#effective Feb 1, 2015 to Dec 31, 2015
+meter_size_5_8_2015 = 6.540
+meter_size_3_4_2015 = 7.490
+meter_size_1_2015 = 9.390
+meter_size_1_1_2_2015 = 14.140
+meter_size_2_2015 = 19.830
+meter_size_3_2015 = 33.130
+meter_size_4_2015 = 52.120
+meter_size_6_2015 = 99.59
+meter_size_8_2015 = 156.57
+meter_size_10_2015 = 223.03
+
+
+#Sec. 94-164. - Monthly water customer charge
+#inside city water fees
+#effective Jan 1, 2016 to Dec 31, 2019
+meter_size_5_8_2016 = 7.540
+meter_size_3_4_2016 = 8.640
+meter_size_1_2016 = 10.830
+meter_size_1_1_2_2016 = 16.300
+meter_size_2_2016 = 22.860
+meter_size_3_2016 = 38.200
+meter_size_4_2016 = 60.090
+meter_size_6_2016 = 114.820
+meter_size_8_2016 = 180.510
+meter_size_10_2016 = 257.130
+
+#Sec. 94-164. - Monthly water customer charge
+#inside city water fees
+#effective Jan 1, 2020 to Dec 31, 2021
+meter_size_5_8_2020 = 8.540
+meter_size_3_4_2020 = 9.780
+meter_size_1_2020 = 12.260
+meter_size_1_1_2_2020 = 18.46
+meter_size_2_2020 = 25.89
+meter_size_3_2020 = 43.26
+meter_size_4_2020 = 68.06
+meter_size_6_2020 = 130.050
+meter_size_8_2020 = 204.45
+meter_size_10_2020 = 291.23
+
+#Sec. 94-164. - Monthly water customer charge
+#inside city water fees
+#effective Jan 1, 2022
+meter_size_5_8_2022 = 9.450
+meter_size_3_4_2022 = 10.93
+meter_size_1_2022 = 13.700
+meter_size_1_1_2_2022 = 20.630
+meter_size_2_2022 = 28.930
+meter_size_3_2022 = 48.330
+meter_size_4_2022 = 76.030
+meter_size_6_2022 = 145.270
+meter_size_8_2022 = 228.39
+meter_size_10_2022 = 325.34
+
 
 sewer_charge = 9.010
 sewer_rate_per_1000 = 9.010
@@ -39,11 +110,11 @@ def monthly_water_bill(start_amt, current_amt, meter_size):
     """Return billed amount from starting current read and prior amount."""
     # start_time = time.process_time_ns()
     if meter_size == 5 / 8:
-        water_base = meter_size_5_8_2019
+        water_base = meter_size_5_8_2016
     elif meter_size == 1:
-        water_base = meter_size_1_2019
+        water_base = meter_size_1_2016
     else:
-        water_base = meter_size_1_2019
+        water_base = meter_size_1_2016
     total_bill = water_base + sewer_charge + garbage_fee + security_fee
     total_bill = total_bill + recycling_fee + safe_drinking_water_fee
     volume = current_amt - start_amt
